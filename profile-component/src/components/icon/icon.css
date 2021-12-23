@@ -1,0 +1,12 @@
+.icon {
+    margin-right: 5px;
+    box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 50%;
+    transition: .3s ease;
+}
+
+.icon:hover {
+    transform: rotate3d(0, 0, 1, 45deg) scale(1.2);
+    fill: red;
+    box-shadow: 2px 4px 8px 0 rgba(255,0,0,0.2);
+}

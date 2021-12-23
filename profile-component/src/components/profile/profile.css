@@ -1,0 +1,113 @@
+.profile-container {
+    width: 50%;
+
+    background: white;
+    border-radius: 20px;
+
+    min-width: 400px;
+    transition: 1s ease;
+    box-shadow: 0px 0px 20px 0 rgba(0,0,0,0.3);
+    transform-style: preserve-3d;
+}
+
+.pfp {
+    margin: 0;
+    border-radius: 50%;
+    box-shadow: 0 0px 10px 0 rgba(0,0,0,0.2);
+    border: 10px solid rgba(255, 255, 255, 1);
+    transition: .5s;
+}
+
+.pfp:hover {
+    border-color: rgba(255, 0, 0, .5);
+    transform: rotate3d(0, 1, 1, -25deg);
+    box-shadow: 0px 0px 20px 0 rgba(255, 0, 0, .5);
+}
+
+@keyframes rotate-color {
+    0% {
+        border-color: rgba(255, 255, 255, 1);
+    }
+
+    25% {
+        border-color:rgba(255, 0, 0, .2);
+    }
+
+    50% {
+        border-color: rgba(0, 255, 0, .2);
+    }
+
+    75% {
+        border-color: rgba(0, 0, 255, .2);
+    }
+
+    100% {
+        border-color: rgba(255, 255, 255, 1);
+    }
+}
+
+.name {
+    margin: 0;
+}
+
+.email {
+    margin: 0;
+    font-size: clamp(10px, 2vmin, 20px);
+}
+
+.title {
+    margin: 0;
+    text-align: left;
+}
+
+.name-bar {
+    display: flex;
+}
+
+/* https://stackoverflow.com/questions/35269947/how-can-i-align-one-item-right-with-flexbox */
+.socials {
+    transform: scale(2);
+    margin-left: auto;
+    margin-top: auto;
+}
+
+.description {
+   margin: 10px; 
+   background-color: whitesmoke;
+   padding: 10px;
+   border: 1px solid rgba(0, 0, 0, .2);
+   border-radius: 10px;
+}
+
+.profile-content {
+    padding: 40px;
+}
+
+@media screen and (max-width: 500px) {
+    .profile-container {
+        min-width: 250px;
+        width: 50vw;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .name {
+        word-wrap: break-word;
+    }
+
+    .title {
+        white-space: nowrap;
+    }
+
+    .name-bar {
+        display: initial;
+    }
+
+    .socials {
+        margin: 10px;
+        transform: scale(1.5);
+    }
+
+}
