@@ -1,11 +1,14 @@
 import './profile.css'
 
 import Icon from './../icon/icon'
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useRef} from 'react';
 import Tilty from 'react-tilty';
+import Card from './card';
 
-function Profile({profileObj, children}) {
+function Profile({profileObj, aboutObj, children, contactObj}) {
     const [isMobile, setIsMobile] = useState(false);
+    const loadRef = useRef(null)
+    const giantRef = useRef(null)
 
     useEffect(() => {
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -15,11 +18,19 @@ function Profile({profileObj, children}) {
         }
     }, []);
 
+    useEffect(() => {
+        setTimeout(() => {
+            let element = loadRef.current;
+            element.classList.add('seen');
+        }, 0);
+        
+    }, [loadRef])
+
     const generateProfile = () => {
         const {name, picture, email, titles} = profileObj;
         
         return (
-            <div className='profile-content'>
+            <div ref={loadRef} className='profile-content hidden'>
                 <div className='header'>
                     <img className='pfp' alt='pfp' src={picture}/>
                     <div className='name-bar'>
@@ -40,15 +51,51 @@ function Profile({profileObj, children}) {
         )
     }
 
-    return (
-        <>
-        {isMobile ? 
-            (<div className='profile-container'>{generateProfile()}</div>) 
-            : 
-            (<Tilty className="profile-container">{generateProfile()}</Tilty>)
-        }
-        </>
-    )
+    const generateAbout = () => {
+        return (
+            <div ref={loadRef} className='profile-content hidden'>
+                <Card giantRef={giantRef} title='B & R Autowrecking' subtitle='Fullstack Developer'/>
+                <Card giantRef={giantRef} title='ChickTech' subtitle='Educational Mentor'/>
+            </div>
+        )
+    }
+
+    if (profileObj !== undefined) {
+        return (
+            <>
+            {isMobile ? 
+                (<div className='profile-container'>{generateProfile()}</div>) 
+                : 
+                (<Tilty className="profile-container">{generateProfile()}</Tilty>)
+            }
+            </>
+        )
+    }
+
+    if (aboutObj !== undefined) {
+        return (
+            <>
+                <div ref={giantRef} className='giant-page-container hidden'/>
+                {isMobile ? 
+                    (<div className='profile-container'>{generateAbout()}</div>) 
+                    : 
+                    (<Tilty className="profile-container">{generateAbout()}</Tilty>)
+                }
+            </>
+        )
+    }
+
+    if (contactObj !== undefined) {
+        return (
+            <>
+            {isMobile ? 
+                (<div className='profile-container'>{}</div>) 
+                : 
+                (<Tilty className="profile-container">{}</Tilty>)
+            }
+            </>
+        )
+    }
 }
 
 export default Profile;

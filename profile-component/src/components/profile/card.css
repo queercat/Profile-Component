@@ -1,0 +1,49 @@
+.card-container {
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 0px 20px 0 rgba(0,0,0,0.3);
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+    transition: .5s;
+
+    font-size: calc(5px + 1vmin);
+    transform-style: preserve-3d;
+}
+
+.card-head {
+    border-radius: 10px;
+    background: white;
+    padding: 1vmin;
+
+    transform: translateZ(30px);
+}
+
+.title-component {
+    display: flex;
+}
+
+.card-button {
+    margin-left: auto;
+    margin-top: auto;
+    transform: translateZ(30px);
+}
+
+.card-body {
+    display: flex;
+    margin-top: 20px;
+    justify-content: right;
+}
+
+.card-title {
+    margin: 0;
+}
+
+.card-subtitle {
+    margin: 0;
+    margin-left: 20px;
+}
+
+.visible {
+    display: unset;
+}
