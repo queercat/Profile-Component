@@ -114,6 +114,12 @@
         justify-content: center;
     }
 
+    .profile-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .name {
         word-wrap: break-word;
     }
