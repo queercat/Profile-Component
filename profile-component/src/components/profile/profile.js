@@ -6,6 +6,7 @@ import Tilty from 'react-tilty';
 
 function Profile() {
     const [profileObj, setProfileObj] = useState({})
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         fetch('https://randomuser.me/api/')
@@ -13,19 +14,35 @@ function Profile() {
         .then(json => {
             setProfileObj(json.results[0]);
         });
+
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            setIsMobile(true);
+        } else {
+            setIsMobile(false);
+        }
     }, []);
 
     const generateProfile = () => {
-        const [name, picture, email] = [
-            profileObj.name,
-            profileObj.picture.large,            
-            profileObj.email
-        ]
+        var name, picture, email, titles;
+        
+        if (Object.keys(profileObj) != 0) {
+            [name, picture, email] = [
+                profileObj.name,
+                profileObj.picture.large,            
+                profileObj.email
+            ]
+        } else {
+            [name, picture, email] = [
+                {first: '', last: ''},
+                '',           
+                []
+            ]
+        }
 
         return (
             <div className='profile-content'>
                 <div className='header'>
-                    <img className='pfp' src={picture}/>
+                    <img className='pfp' alt='pfp' src={picture}/>
                     <div className='name-bar'>
                         <h1 className='name'>{name.first + ' ' + name.last}</h1>
                         <div className='socials'>
@@ -33,21 +50,24 @@ function Profile() {
                             <Icon type='instagram'/>
                         </div>
                     </div>
-                    <p className='title'>Software Engineer</p>
+                    {}
                 </div>
 
                 <div className='description'>
                     <p className='email'>{email}</p>
-                    <p className=''></p>
                 </div>
             </div>
         )
     }
 
     return (
-        <Tilty className="profile-container">
-            {Object.keys(profileObj) != 0 ? (generateProfile()) : <></>}
-        </Tilty>
+        <>
+        {isMobile ? 
+            (<div className='profile-container'>{generateProfile()}</div>) 
+            : 
+            (<Tilty className="profile-container">{generateProfile()}</Tilty>)
+        }
+        </>
     )
 }
 
