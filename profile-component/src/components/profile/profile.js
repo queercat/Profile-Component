@@ -4,17 +4,10 @@ import Icon from './../icon/icon'
 import {useEffect, useState} from 'react';
 import Tilty from 'react-tilty';
 
-function Profile() {
-    const [profileObj, setProfileObj] = useState({})
+function Profile({profileObj}) {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        fetch('https://randomuser.me/api/')
-        .then(res => res.json())
-        .then(json => {
-            setProfileObj(json.results[0]);
-        });
-
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             setIsMobile(true);
         } else {
@@ -23,38 +16,25 @@ function Profile() {
     }, []);
 
     const generateProfile = () => {
-        var name, picture, email, titles;
+        const {name, picture, email, titles} = profileObj;
         
-        if (Object.keys(profileObj) != 0) {
-            [name, picture, email] = [
-                profileObj.name,
-                profileObj.picture.large,            
-                profileObj.email
-            ]
-        } else {
-            [name, picture, email] = [
-                {first: '', last: ''},
-                '',           
-                []
-            ]
-        }
-
         return (
             <div className='profile-content'>
                 <div className='header'>
                     <img className='pfp' alt='pfp' src={picture}/>
                     <div className='name-bar'>
-                        <h1 className='name'>{name.first + ' ' + name.last}</h1>
+                        <h1 className='name'>{name.first + ' '}<span className='last'>{name.last}</span></h1>
                         <div className='socials'>
                             <Icon type='twitter'/>
                             <Icon type='instagram'/>
+                            <Icon type='linkedin'/>
                         </div>
                     </div>
-                    {}
+                    {titles.map(title => <p className='title' key={title.first}>{title.first + ' '}<span className='last2'>{title.last}</span></p>)}
                 </div>
 
                 <div className='description'>
-                    <p className='email'>{email}</p>
+                    
                 </div>
             </div>
         )

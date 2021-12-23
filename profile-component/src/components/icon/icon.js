@@ -1,5 +1,5 @@
 import './icon.css'
-import {instagram_icon, twitter_icon} from './icons';
+import {instagram_icon, twitter_icon, linkedin_icon} from './icons';
 
 function Icon({type}) {
 
@@ -16,6 +16,9 @@ function Icon({type}) {
                 break;
             case 'twitter':
                 src_url=twitter_icon;
+                break;
+            case 'linkedin':
+                src_url=linkedin_icon;
                 break;
             default:
                 throw new Error('invalid icon type!');
