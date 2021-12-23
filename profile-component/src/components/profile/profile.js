@@ -36,9 +36,8 @@ function Profile({profileObj, aboutObj, children, contactObj}) {
                     <div className='name-bar'>
                         <h1 className='name'>{name.first + ' '}<span className='last'>{name.last}</span></h1>
                         <div className='socials'>
-                            <Icon type='twitter'/>
-                            <Icon type='instagram'/>
                             <Icon type='linkedin'/>
+                            <Icon type='github'/>
                         </div>
                     </div>
                     {titles.map(title => <p className='title' key={title.first}>{title.first + ' '}<span className='last2'>{title.last}</span></p>)}
