@@ -2,6 +2,7 @@ import './profile.css'
 
 import Icon from './../icon/icon'
 import {useEffect, useState} from 'react';
+import Tilty from 'react-tilty';
 
 function Profile() {
     const [profileObj, setProfileObj] = useState({})
@@ -44,9 +45,9 @@ function Profile() {
     }
 
     return (
-        <div className="profile-container">
+        <Tilty className="profile-container">
             {Object.keys(profileObj) != 0 ? (generateProfile()) : <></>}
-        </div>
+        </Tilty>
     )
 }
 
