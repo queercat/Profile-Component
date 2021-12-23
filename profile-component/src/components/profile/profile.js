@@ -4,7 +4,7 @@ import Icon from './../icon/icon'
 import {useEffect, useState} from 'react';
 import Tilty from 'react-tilty';
 
-function Profile({profileObj}) {
+function Profile({profileObj, children}) {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -34,7 +34,7 @@ function Profile({profileObj}) {
                 </div>
 
                 <div className='description'>
-                    
+                    {children}
                 </div>
             </div>
         )

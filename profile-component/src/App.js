@@ -1,6 +1,9 @@
 import './App.css';
 
 import Profile from './components/profile/profile';
+import Next from './components/next/next';
+
+import {VoxelTemplate} from './components/voxel/Voxel';
 
 function App() {
 
@@ -13,13 +16,14 @@ function App() {
             name: {first: 'May', last:'Tusek'}, 
             picture: img_url, 
             titles: [{first: 'Fullstack', last: 'Developer'}, {first: 'Software', last: 'Engineer'}],
-            email: 'tusek.may@gmail.com',
-            descriptions: [],
-          }}
-          />
-      </div>
-      
-      <div className='test'>
+            email: 'tusek.may@gmail.com'
+          }}>
+            <div className='center'>
+              <VoxelTemplate baseURL="/models/computer-cute" color="#f5f5f5" width=".2" height=".25" rot={[0, 45, 0]} trans={[0, -.6, 0]} animRot={[0, 0.01, 0]}/>
+            </div>
+          </Profile>
+
+          <Next/>
       </div>
     </div>
   );

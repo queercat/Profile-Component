@@ -1,0 +1,43 @@
+.next {
+    width: 75px;
+    height: 75px;
+
+    background: white;
+    position: fixed;
+    
+    bottom: 0;
+    left: calc(50vw - 37.5px);
+
+    margin-bottom: 20px;
+
+    border-radius: 50%;
+    
+    box-shadow: 0px 0px 20px 0 rgba(0,0,0,0.3);
+
+    animation-name: hover;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+}
+
+@media screen and (max-width: 800px) {
+    .next {
+        left: unset;
+        right: 10px;
+    }
+}
+
+@keyframes hover {
+    0%, 100% {
+        transform: translate(0px, 0px);
+    }
+
+    50% {
+        transform: translate(0px, 10px);
+    }
+}
+
+.down-arrow {
+    fill: black;
+    transform: scale(1.5) rotate(90deg);
+}
