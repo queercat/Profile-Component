@@ -8,7 +8,7 @@ import {useState, useEffect} from 'react'
 
 function App() {
 
-  const img_url = 'https://media-exp1.licdn.com/dms/image/C5603AQHjIyD4eJU8cg/profile-displayphoto-shrink_200_200/0/1532974874352?e=1645660800&v=beta&t=ev8qq6NZlBlnUZVqqac0ksILKdTRujmZ-mIQHdGeHBM';
+  const img_url = 'https://i.imgur.com/XIp3iYd.png';
   const [appState, setAppState] = useState(0);
 
   useEffect(() => {
